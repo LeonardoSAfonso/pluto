@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE "requests" ALTER COLUMN "paid_at" SET DATA TYPE TIMESTAMPTZ(3);

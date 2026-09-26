@@ -1,0 +1,83 @@
+generator client {
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "linux-musl-openssl-3.0.x"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  REQUESTER
+  FINANCE
+}
+
+enum RequestStatus {
+  PENDING
+  APPROVED
+  REJECTED
+  PAID
+}
+
+model User {
+  id            String   @id @default(uuid())
+  name          String
+  email         String   @unique
+  password_hash String
+  role          Role
+  created_at    DateTime @default(now())
+
+  requests    Request[]    @relation("RequesterRequests")
+  auditEvents AuditEvent[] @relation("ActorAuditEvents")
+
+  @@map("users")
+}
+
+model Request {
+  id                String        @id @default(uuid())
+  supplier_name     String
+  supplier_cnpj     String
+  invoice_number    String
+  amount_cents      Int
+  competence        String
+  due_date          DateTime      @db.Date
+  category          String
+  description       String?
+  status            RequestStatus @default(PENDING)
+  rejection_reason  String?
+  paid_at           DateTime?     @db.Timestamptz(3)
+  payment_reference String?
+  created_at        DateTime      @default(now())
+  updated_at        DateTime      @default(now())
+
+  requester_id String
+  requester    User   @relation("RequesterRequests", fields: [requester_id], references: [id])
+
+  auditEvents AuditEvent[]
+
+  @@unique([supplier_cnpj, invoice_number])
+  @@index([status])
+  @@index([due_date])
+  @@index([requester_id])
+  @@index([created_at])
+  @@map("requests")
+}
+
+model AuditEvent {
+  id              String         @id @default(uuid())
+  previous_status RequestStatus?
+  new_status      RequestStatus
+  reason          String?
+  created_at      DateTime       @default(now())
+
+  request_id String
+  request    Request @relation(fields: [request_id], references: [id])
+
+  actor_id String
+  actor    User   @relation("ActorAuditEvents", fields: [actor_id], references: [id])
+
+  @@index([request_id])
+  @@index([actor_id])
+  @@map("audit_events")
+}
