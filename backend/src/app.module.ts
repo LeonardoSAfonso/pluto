@@ -4,6 +4,7 @@ import { OrmModule } from './orm/orm.module';
 import { UsersModule } from './users/users.module';
 import { AuthModule } from './auth/auth.module';
 import { RequestsModule } from './requests/requests.module';
+import { DashboardModule } from './dashboard/dashboard.module';
 
 @Module({
   imports: [
@@ -12,6 +13,7 @@ import { RequestsModule } from './requests/requests.module';
     UsersModule,
     AuthModule,
     RequestsModule,
+    DashboardModule,
   ],
 })
 export class AppModule {}
