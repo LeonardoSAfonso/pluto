@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "declaration": true,
+    "removeComments": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    "target": "ES2021",
+    "sourceMap": true,
+    "outDir": "./dist",
+    "paths": {
+      "src/*": ["./src/*"],
+      "test/*": ["./test/*"]
+    },
+    "incremental": true,
+    "skipLibCheck": true,
+    "strictNullChecks": false,
+    "noImplicitAny": false,
+    "strictBindCallApply": false,
+    "forceConsistentCasingInFileNames": false,
+    "noFallthroughCasesInSwitch": false,
+    "types": ["jest", "node"]
+  },
+  "include": ["src/**/*", "prisma/**/*", "test/**/*"],
+  "exclude": ["node_modules", "dist"]
+}

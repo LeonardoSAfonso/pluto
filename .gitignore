@@ -1,0 +1,44 @@
+# Dependencies
+node_modules/
+*/node_modules/
+
+# Production builds
+dist/
+*/dist/
+.next/
+out/
+build/
+*.tsbuildinfo
+
+# Coverage
+coverage/
+*/coverage/
+
+# Environment
+.env
+.env*.local
+*.env
+backend/.env
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# System & IDE
+.DS_Store
+Thumbs.db
+*Zone.Identifier*
+.vscode/
+.idea/
+
+# Internal planning and specification files
+PLANO_*.md
+REGRAS.md
+TESTE_TECNICO.md
+*.docx
+.agents/
+/data/
+/.env.example
+/README.md
