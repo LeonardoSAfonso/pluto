@@ -36,3 +36,15 @@ export interface PaginatedResponse<T> {
   page: number;
   totalPages: number;
 }
+
+export interface CreateRequestInput {
+  supplier_name: string;
+  supplier_cnpj: string;
+  invoice_number: string;
+  amount_cents: number;
+  competence: string; // formato AAAA-MM (ex: 2026-09)
+  due_date: string; // formato AAAA-MM-DD
+  category: string;
+  description?: string;
+}
+

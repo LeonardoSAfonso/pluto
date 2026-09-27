@@ -81,3 +81,24 @@ export function parseBRLtoCents(value: string | number): number {
   const parsed = parseInt(cleanNumber, 10);
   return isNaN(parsed) ? 0 : parsed * 100;
 }
+
+/**
+ * Aplica máscara de moeda BRL em tempo real conforme o usuário digita apenas dígitos.
+ * Exemplo:
+ * - "1" -> "0,01"
+ * - "15" -> "0,15"
+ * - "155" -> "1,55"
+ * - "155313" -> "1.553,13"
+ */
+export function maskCurrencyInput(value: string | null | undefined): string {
+  if (!value) return '';
+
+  const digits = value.replace(/\D/g, '');
+  if (!digits) return '';
+
+  const cents = parseInt(digits, 10);
+  if (isNaN(cents)) return '';
+
+  return formatCentsToBRLWithoutPrefix(cents);
+}
+

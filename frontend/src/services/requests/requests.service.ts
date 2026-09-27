@@ -1,5 +1,5 @@
 import BaseService from '../base.service';
-import { PaginatedResponse, QueryRequestsParams, RequestItem } from '@/types/api/request.types';
+import { CreateRequestInput, PaginatedResponse, QueryRequestsParams, RequestItem } from '@/types/api/request.types';
 
 export class RequestsService extends BaseService {
   public async getRequests(
@@ -26,6 +26,12 @@ export class RequestsService extends BaseService {
     const { data } = await this.api.get<RequestItem>(`/requests/${id}`);
     return data;
   }
+
+  public async createRequest(payload: CreateRequestInput): Promise<RequestItem> {
+    const { data } = await this.api.post<RequestItem>('/requests', payload);
+    return data;
+  }
 }
 
 export default RequestsService;
+
