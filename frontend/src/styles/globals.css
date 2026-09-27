@@ -1,0 +1,57 @@
+@import "tailwindcss" important;
+
+@theme {
+  /* Pluto Primary - Ouro Mitológico e Prosperidade */
+  --color-pluto-gold-50: #FFFBEB;
+  --color-pluto-gold-100: #FEF3C7;
+  --color-pluto-gold-200: #FDE68A;
+  --color-pluto-gold-300: #FCD34D;
+  --color-pluto-gold-400: #FBBF24;
+  --color-pluto-gold-500: #F59E0B;
+  --color-pluto-gold-600: #D97706;
+  --color-pluto-gold-700: #B45309;
+  --color-pluto-gold-800: #92400E;
+  --color-pluto-gold-900: #78350F;
+
+  /* Pluto Navy - Solidez Institucional e Base Escura */
+  --color-pluto-navy-950: #060B14;
+  --color-pluto-navy-900: #0A1124;
+  --color-pluto-navy-800: #0F1D3D;
+  --color-pluto-navy-700: #172A59;
+  --color-pluto-navy-600: #233E7E;
+
+  /* Aliases Semânticos Principais */
+  --color-primary: #D4AF37;
+  --color-primary-hover: #C5A028;
+  --color-primary-light: #FDF6E2;
+  --color-primary-dark: #A38421;
+
+  /* Semântica Financeira de Status (Regras GEX / REGRAS.md) */
+  --color-status-pending: #F59E0B;
+  --color-status-pending-bg: #FEF3C7;
+  --color-status-pending-text: #92400E;
+
+  --color-status-approved: #10B981;
+  --color-status-approved-bg: #D1FAE5;
+  --color-status-approved-text: #065F46;
+
+  --color-status-paid: #3B82F6;
+  --color-status-paid-bg: #DBEAFE;
+  --color-status-paid-text: #1E40AF;
+
+  --color-status-rejected: #EF4444;
+  --color-status-rejected-bg: #FEE2E2;
+  --color-status-rejected-text: #991B1B;
+}
+
+body {
+  font-family: var(--font-inter), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background-color: #F8FAFC;
+  color: #0F172A;
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11", "tnum";
+}
+
+button {
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
