@@ -39,5 +39,4 @@ REGRAS.md
 TESTE_TECNICO.md
 *.docx
 .agents/
-/data/
 /.env.example
