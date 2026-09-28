@@ -48,3 +48,29 @@ export interface CreateRequestInput {
   description?: string;
 }
 
+export interface AuditEventItem {
+  id: string;
+  request_id: string;
+  actor_id: string;
+  previous_status: RequestStatus | null;
+  new_status: RequestStatus;
+  reason: string | null;
+  created_at: string;
+  actor?: AuthenticatedUser;
+}
+
+export interface RequestDetailItem extends RequestItem {
+  auditEvents: AuditEventItem[];
+}
+
+export interface DecisionInput {
+  action: 'APPROVE' | 'REJECT';
+  reason?: string;
+}
+
+export interface MarkPaidInput {
+  paid_at: string;
+  payment_reference: string;
+}
+
+

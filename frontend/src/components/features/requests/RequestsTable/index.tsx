@@ -5,7 +5,9 @@ import { useRouter } from 'next/navigation';
 import { RequestsTableProps } from './types';
 import StatusBadge from '@/components/ui/StatusBadge';
 import { formatCentsToBRL } from '@/utils/formatMoney';
+import { applyCnpjMask } from '@/utils/formatCnpj';
 import { RequestItem } from '@/types/api/request.types';
+
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import InboxOutlinedIcon from '@mui/icons-material/InboxOutlined';
 
@@ -148,8 +150,9 @@ export const RequestsTable: React.FC<RequestsTableProps> = ({
                         {req.supplier_name}
                       </span>
                       <span className="text-xs text-slate-400 font-mono">
-                        CNPJ: {req.supplier_cnpj}
+                        CNPJ: {applyCnpjMask(req.supplier_cnpj)}
                       </span>
+
                     </td>
 
                     {/* Nota Fiscal */}

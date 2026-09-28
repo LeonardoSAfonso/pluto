@@ -1,5 +1,13 @@
 import BaseService from '../base.service';
-import { CreateRequestInput, PaginatedResponse, QueryRequestsParams, RequestItem } from '@/types/api/request.types';
+import {
+  CreateRequestInput,
+  DecisionInput,
+  MarkPaidInput,
+  PaginatedResponse,
+  QueryRequestsParams,
+  RequestDetailItem,
+  RequestItem,
+} from '@/types/api/request.types';
 
 export class RequestsService extends BaseService {
   public async getRequests(
@@ -22,8 +30,8 @@ export class RequestsService extends BaseService {
     return data;
   }
 
-  public async getRequest(id: string): Promise<RequestItem> {
-    const { data } = await this.api.get<RequestItem>(`/requests/${id}`);
+  public async getRequest(id: string): Promise<RequestDetailItem> {
+    const { data } = await this.api.get<RequestDetailItem>(`/requests/${id}`);
     return data;
   }
 
@@ -31,7 +39,18 @@ export class RequestsService extends BaseService {
     const { data } = await this.api.post<RequestItem>('/requests', payload);
     return data;
   }
+
+  public async decideRequest(id: string, payload: DecisionInput): Promise<RequestItem> {
+    const { data } = await this.api.post<RequestItem>(`/requests/${id}/decision`, payload);
+    return data;
+  }
+
+  public async markPaid(id: string, payload: MarkPaidInput): Promise<RequestItem> {
+    const { data } = await this.api.post<RequestItem>(`/requests/${id}/mark-paid`, payload);
+    return data;
+  }
 }
 
 export default RequestsService;
+
 
